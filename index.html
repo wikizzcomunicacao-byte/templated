@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +8,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        darkBg: '#090a0f',
-                        cardSurface: '#12141c',
-                        brandBlue: '#3b82f6',
-                        brandPurple: '#8b5cf6',
+                        primaryDark: '#0b0f19',
+                        primaryBlue: '#2563eb',
+                        primaryPurple: '#7c3aed',
+                        lightBg: '#f8fafc',
+                        cardLight: '#ffffff',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -29,246 +29,383 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-darkBg text-slate-100 font-sans antialiased selection:bg-brandBlue selection:text-white overflow-x-hidden">
+<body class="bg-lightBg text-slate-800 font-sans antialiased selection:bg-purple-600 selection:text-white overflow-x-hidden">
 
-    <!-- HEADER / MENU SUPERIOR -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-darkBg/80 backdrop-blur-md border-b border-slate-800/60">
+    <!-- HEADER / MENU SUPERIOR (Fundo Escuro) -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-primaryDark/90 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
-            <!-- Logo / Nome -->
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center font-black text-white shadow-lg shadow-blue-500/20">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-purple-600 flex items-center justify-center font-black text-white text-lg shadow-lg shadow-purple-500/20">
                     🦷
                 </div>
                 <span class="font-extrabold text-white text-base tracking-wide">{{CLINIC_NAME}}</span>
             </div>
 
-            <!-- Links de Navegação -->
             <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-300 uppercase tracking-wider">
-                <a href="#tratamentos" class="hover:text-blue-400 transition-colors">Tratamentos</a>
-                <a href="#transformacao" class="hover:text-blue-400 transition-colors">Resultados</a>
-                <a href="#depoimentos" class="hover:text-blue-400 transition-colors">Depoimentos</a>
+                <a href="#sobre" class="hover:text-purple-400 transition-colors">Sobre</a>
+                <a href="#tratamentos" class="hover:text-purple-400 transition-colors">Tratamentos</a>
+                <a href="#transformacao" class="hover:text-purple-400 transition-colors">Resultados</a>
+                <a href="#depoimentos" class="hover:text-purple-400 transition-colors">Depoimentos</a>
             </nav>
 
-            <!-- CTA do Header -->
-            <a href="https://wa.me/{{WHATSAPP}}" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-xs shadow-lg shadow-blue-500/20 hover:scale-105 transition-all">
+            <a href="https://wa.me/{{WHATSAPP}}" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-purple-600 text-white font-bold text-xs shadow-lg shadow-purple-600/30 hover:bg-purple-700 transition-all">
                 <i data-lucide="calendar" class="w-4 h-4"></i>
-                Agendar
+                Agendar Consulta
             </a>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-32 pb-20 overflow-hidden bg-gradient-to-b from-black via-darkBg to-darkBg">
-        <div class="absolute inset-0 z-0 opacity-20">
-            <img src="./hero_dentista.jpg" alt="Background {{CLINIC_NAME}}" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/80 to-black/60"></div>
-        </div>
-
-        <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center gap-8">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900/80 border border-slate-700/60 shadow-xl backdrop-blur-md">
-                <i data-lucide="award" class="w-4 h-4 text-brandBlue"></i>
-                <span class="text-xs uppercase tracking-wider text-slate-300 font-semibold">Excelência em Odontologia em {{CITY}}</span>
-            </div>
-
-            <h1 class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white uppercase max-w-3xl leading-[1.15]">
-                SEU SORRISO IMPORTA — <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">CUIDADO ESPECIALIZADO E UM FUTURO MAIS BRILHANTE</span>
-            </h1>
-
-            <p class="text-sm sm:text-base text-slate-400 max-w-xl font-normal">
-                Na {{CLINIC_NAME}}, unimos tecnologia avançada e atendimento humanizado para transformar o seu sorriso com conforto e segurança.
-            </p>
-
-            <a href="https://wa.me/{{WHATSAPP}}" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-base shadow-xl shadow-brandBlue/30 hover:scale-105 transition-all duration-300">
-                <i data-lucide="calendar" class="w-5 h-5"></i>
-                Agendar Consulta pelo WhatsApp
-            </a>
-
-            <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-800/80 w-full max-w-lg text-center">
-                <div>
-                    <span class="block text-xl sm:text-2xl font-black text-white">10+</span>
-                    <span class="text-[10px] text-slate-400 uppercase tracking-wider">Anos de Experiência</span>
+    <!-- HERO SECTION (Fundo Escuro com Imagem e Cards Flutuantes) -->
+    <section class="relative min-h-[90vh] bg-primaryDark text-white pt-32 pb-20 px-4 overflow-hidden flex flex-col justify-between">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center my-auto">
+            <!-- Texto Esquerda -->
+            <div class="flex flex-col gap-6 text-left">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 w-fit text-xs font-medium text-slate-300">
+                    <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+                    <span>Excelência em Odontologia em {{CITY}}</span>
                 </div>
-                <div>
-                    <span class="block text-xl sm:text-2xl font-black text-white">5.000+</span>
-                    <span class="text-[10px] text-slate-400 uppercase tracking-wider">Sorrisos Transformados</span>
-                </div>
-                <div>
-                    <span class="block text-xl sm:text-2xl font-black text-white">100%</span>
-                    <span class="text-[10px] text-slate-400 uppercase tracking-wider">Compromisso</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NOSSOS TRATAMENTOS / SERVIÇOS -->
-    <section id="tratamentos" class="py-24 px-4 max-w-7xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-4 uppercase">
-                TRATAMENTOS <span class="text-brandBlue">COMPLETOS</span>
-            </h2>
-            <p class="text-slate-400 text-sm sm:text-base">
-                Soluções avançadas para todas as necessidades da sua saúde bucal e estética do sorriso.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-cardSurface border border-slate-800 rounded-2xl overflow-hidden flex flex-col group hover:border-brandBlue/50 transition-all">
-                <div class="h-48 overflow-hidden bg-slate-900">
-                    <img src="./implantes.jpg" alt="Implantes Dentários" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-white mb-2">Implantes Dentários</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Recupere a função mastigatória e a auto-estima com tecnologia de ponta e segurança total.</p>
-                </div>
-            </div>
-
-            <div class="bg-cardSurface border border-slate-800 rounded-2xl overflow-hidden flex flex-col group hover:border-brandBlue/50 transition-all">
-                <div class="h-48 overflow-hidden bg-slate-900">
-                    <img src="./clareamento.jpg" alt="Clareamento Dental" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-white mb-2">Clareamento a Laser</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Dentes visivelmente mais brancos e brilhantes em poucas sessões, sem prejudicar o esmalte.</p>
-                </div>
-            </div>
-
-            <div class="bg-cardSurface border border-slate-800 rounded-2xl overflow-hidden flex flex-col group hover:border-brandBlue/50 transition-all">
-                <div class="h-48 overflow-hidden bg-slate-900">
-                    <img src="./ortodontia.jpg" alt="Ortodontia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-white mb-2">Ortodontia e Alinhadores</h3>
-                    <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">Alinhamento estético e funcional dos dentes com aparelhos modernos ou transparentes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SLIDER DE ANTES & DEPOIS (SORRISOS) -->
-    <section id="transformacao" class="py-24 px-4 max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-2 uppercase">TRANSFORMAÇÕES REAIS</h2>
-        <p class="text-slate-400 text-sm mb-12">Arraste para o lado e veja o impacto de um novo sorriso</p>
-
-        <div class="bg-cardSurface border border-slate-800 rounded-3xl p-6 shadow-2xl overflow-hidden relative flex justify-center">
-            <div class="comparison-container relative w-full max-w-2xl h-[380px] sm:h-[450px] rounded-2xl overflow-hidden select-none cursor-ew-resize shadow-inner bg-slate-900" id="comparisonSlider">
-                <img src="./sorriso_depois.jpg" alt="Depois" class="absolute inset-0 w-full h-full object-cover">
                 
-                <div class="absolute inset-0 overflow-hidden" id="beforeImageWrapper" style="width: 50%;">
-                    <img src="./sorriso_antes.jpg" alt="Antes" class="absolute inset-0 w-full h-full object-cover max-w-none" id="beforeImg">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+                    Seu sorriso <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">importa</span>, atendimento odontológico especializado para um futuro brilhante
+                </h1>
+
+                <p class="text-slate-400 text-sm sm:text-base max-w-lg font-normal leading-relaxed">
+                    Na {{CLINIC_NAME}}, unimos tecnologia de ponta e cuidado humanizado para garantir a saúde e a estética completa do seu sorriso.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="https://wa.me/{{WHATSAPP}}" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-purple-600 text-white font-bold text-sm shadow-xl shadow-purple-600/30 hover:bg-purple-700 transition-all">
+                        Agendar Consulta
+                    </a>
                 </div>
 
-                <div class="absolute top-0 bottom-0 w-1 bg-white shadow-2xl z-10 flex items-center justify-center" id="sliderDivider" style="left: 50%;">
-                    <div class="absolute w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-lg font-bold text-xs border-2 border-slate-700">
-                        ↔
+                <!-- Estatísticas Rápidas -->
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/80 max-w-md">
+                    <div>
+                        <span class="block text-xl sm:text-2xl font-black text-white">10+</span>
+                        <span class="text-[10px] text-slate-400 uppercase tracking-wider">Anos de Experiência</span>
+                    </div>
+                    <div>
+                        <span class="block text-xl sm:text-2xl font-black text-white">5k+</span>
+                        <span class="text-[10px] text-slate-400 uppercase tracking-wider">Pacientes Felizes</span>
+                    </div>
+                    <div>
+                        <span class="block text-xl sm:text-2xl font-black text-white">100%</span>
+                        <span class="text-[10px] text-slate-400 uppercase tracking-wider">Satisfação</span>
                     </div>
                 </div>
+            </div>
 
-                <span class="absolute top-4 left-4 bg-black/70 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full z-20 pointer-events-none border border-white/10">Antes</span>
-                <span class="absolute top-4 right-4 bg-blue-600/80 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full z-20 pointer-events-none border border-white/10">Depois</span>
+            <!-- Imagem e Card Flutuante Direita -->
+            <div class="relative flex justify-center">
+                <div class="relative w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900 aspect-[4/5]">
+                    <img src="./hero_dentista.jpg" alt="Atendimento Odontológico" class="w-full h-full object-cover">
+                    <!-- Card Flutuante Simulando a Foto -->
+                    <div class="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl border border-slate-700 shadow-xl flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-600/20 text-purple-400 flex items-center justify-center font-bold">
+                            ⭐
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-white">Equipe Especializada</p>
+                            <p class="text-[11px] text-slate-400">Atendimento humanizado e seguro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra inferior flutuante do Hero -->
+        <div class="max-w-7xl mx-auto w-full px-4 pt-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-900/60 border border-slate-800 p-4 rounded-2xl backdrop-blur-md max-w-xl">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center text-xs font-bold">✓</div>
+                    <span class="text-xs font-semibold text-slate-200">Tecnologia de Ponta</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-purple-600/20 text-purple-400 flex items-center justify-center text-xs font-bold">✓</div>
+                    <span class="text-xs font-semibold text-slate-200">Avaliação Personalizada</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- DEPOIMENTOS DE PACIENTES -->
-    <section id="depoimentos" class="py-24 px-4 max-w-7xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-black tracking-tight mb-16 text-center uppercase">O QUE NOSSOS PACIENTES DIZEM</h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="bg-cardSurface border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex text-amber-400 gap-1 mb-4">★★★★★</div>
-                    <p class="text-slate-300 text-xs italic mb-4">"Atendimento impecável! Fiz meu clareamento e o resultado superou todas as minhas expectativas."</p>
-                </div>
-                <span class="text-xs font-bold text-white">Juliana M.</span>
+    <!-- SEÇÃO 2: COMPROMISSO COM A SAÚDE (Fundo Claro) -->
+    <section class="py-24 px-4 bg-lightBg text-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white p-2">
+                <img src="./clinica_interior.jpg" alt="Nossa Clínica" class="w-full h-[350px] object-cover rounded-2xl">
             </div>
-
-            <div class="bg-cardSurface border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex text-amber-400 gap-1 mb-4">★★★★★</div>
-                    <p class="text-slate-300 text-xs italic mb-4">"Profissionais extremamente atenciosos. Me senti seguro do início ao fim do implante."</p>
-                </div>
-                <span class="text-xs font-bold text-white">Marcos R.</span>
-            </div>
-
-            <div class="bg-cardSurface border border-slate-800/80 rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex text-amber-400 gap-1 mb-4">★★★★★</div>
-                    <p class="text-slate-300 text-xs italic mb-4">"A clínica é linda, moderna e o atendimento é pontual. Recomendo de olhos fechados!"</p>
-                </div>
-                <span class="text-xs font-bold text-white">Camila S.</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- FORMULÁRIO DE AGENDAMENTO DIRETO (WHATSAPP) -->
-    <section id="agendamento" class="py-24 px-4 max-w-4xl mx-auto">
-        <div class="bg-cardSurface border border-brandBlue/30 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
-            <div class="absolute -top-24 -right-24 w-64 h-64 bg-brandBlue/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="text-center max-w-xl mx-auto mb-10 relative z-10">
-                <h2 class="text-2xl sm:text-4xl font-black tracking-tight mb-3 uppercase">
-                    AGende SUA <span class="text-brandBlue">VISITA ONLINE</span>
+            <div class="flex flex-col gap-6">
+                <span class="text-xs font-bold text-purple-600 uppercase tracking-widest">Nossa Missão</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
+                    Compromisso com a sua saúde bucal e beleza
                 </h2>
-                <p class="text-slate-400 text-xs sm:text-sm">
-                    Preencha os dados abaixo e agende seu horário direto com nossa recepção pelo WhatsApp.
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Acreditamos que um sorriso saudável transforma vidas. Por isso, oferecemos um ambiente acolhedor, equipamentos modernos e protocolos rigorosos de biossegurança para garantir o seu bem-estar em cada procedimento.
+                </p>
+                <div class="grid grid-cols-2 gap-6 pt-4 border-t border-slate-200">
+                    <div>
+                        <span class="block text-3xl font-black text-slate-900 mb-1">98%</span>
+                        <span class="text-xs text-slate-500 font-medium">Recomendações de pacientes satisfeitos com os resultados.</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-black text-slate-900 mb-1">100%</span>
+                        <span class="text-xs text-slate-500 font-medium">Foco em conforto, estética e ausência de dor.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 3: TRATAMENTOS (Fundo Claro) -->
+    <section id="tratamentos" class="py-24 px-4 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold text-purple-600 uppercase tracking-widest">Especialidades</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mt-2 mb-4">
+                    Cuidados odontológicos completos para cada sorriso
+                </h2>
+                <p class="text-slate-600 text-sm">
+                    Soluções sob medida para restaurar a função e a estética dos seus dentes.
                 </p>
             </div>
 
-            <form onsubmit="sendWhatsAppBooking(event)" class="relative z-10 flex flex-col gap-5 max-w-lg mx-auto">
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nome Completo</label>
-                    <input type="text" id="patientName" required placeholder="Ex: Ana Paula" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brandBlue transition-all">
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Especialidade / Tratamento</label>
-                        <select id="treatmentType" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandBlue transition-all">
-                            <option value="Avaliação Geral">Avaliação Geral</option>
-                            <option value="Implantes Dentários">Implantes Dentários</option>
-                            <option value="Clareamento Dental">Clareamento Dental</option>
-                            <option value="Ortodontia">Ortodontia</option>
-                            <option value="Urgência / Dor">Urgência</option>
-                        </select>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-lightBg border border-slate-200 rounded-3xl overflow-hidden flex flex-col group hover:shadow-lg transition-all">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="./implantes.jpg" alt="Implantes Dentários" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Melhor Período</label>
-                        <select id="timePreference" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brandBlue transition-all">
-                            <option value="Manhã">Manhã</option>
-                            <option value="Tarde">Tarde</option>
-                            <option value="Noite">Noite</option>
-                        </select>
+                    <div class="p-8 flex flex-col flex-1 justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider block mb-2">Cirurgia</span>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Implantes Dentários</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">Recupere a segurança ao sorrir e mastigar com implantes de alta durabilidade e tecnologia avançada.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Observações (Opcional)</label>
-                    <textarea id="patientNotes" rows="3" placeholder="Ex: Sinto um leve incômodo no dente lateral..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-brandBlue transition-all resize-none"></textarea>
+                <!-- Card 2 -->
+                <div class="bg-lightBg border border-slate-200 rounded-3xl overflow-hidden flex flex-col group hover:shadow-lg transition-all">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="./clareamento.jpg" alt="Clareamento Dental" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col flex-1 justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider block mb-2">Estética</span>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Clareamento a Laser</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">Deixe seus dentes visivelmente mais brancos e radiantes com técnicas seguras que preservam o esmalte.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <button type="submit" class="w-full mt-2 inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold text-sm shadow-xl shadow-brandBlue/30 hover:scale-[1.02] transition-all duration-300">
-                    <i data-lucide="message-circle" class="w-5 h-5"></i>
-                    Confirmar Agendamento no WhatsApp
-                </button>
-            </form>
+                <!-- Card 3 -->
+                <div class="bg-lightBg border border-slate-200 rounded-3xl overflow-hidden flex flex-col group hover:shadow-lg transition-all">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img src="./ortodontia.jpg" alt="Ortodontia" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-8 flex flex-col flex-1 justify-between">
+                        <div>
+                            <span class="text-[10px] font-bold text-purple-600 uppercase tracking-wider block mb-2">Alinhamento</span>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Ortodontia Avançada</h3>
+                            <p class="text-slate-600 text-xs leading-relaxed">Corrija o posicionamento dos dentes com aparelhos modernos, metálicos, estéticos ou alinhadores transparentes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-black/80 border-t border-slate-900 pt-16 pb-12 mt-20">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-xs text-slate-400">
+    <!-- SEÇÃO 4: FAIXA DESTAQUE ESCURA (Profissional) -->
+    <section class="py-20 bg-primaryDark text-white">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="flex flex-col gap-6">
+                <span class="text-xs font-bold text-purple-400 uppercase tracking-widest">Confiança Total</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                    Resultados excelentes que você pode confiar
+                </h2>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    Nossa equipe é formada por especialistas dedicados a proporcionar o melhor atendimento clínico, unindo ciência, arte e tecnologia em benefício do seu sorriso.
+                </p>
+                <div class="flex flex-col gap-3 pt-2">
+                    <div class="flex items-center gap-3 text-sm text-slate-200">
+                        <div class="w-5 h-5 rounded-full bg-purple-600/30 text-purple-400 flex items-center justify-center text-xs font-bold">✓</div>
+                        <span>Profissionais altamente qualificados e atualizados</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-slate-200">
+                        <div class="w-5 h-5 rounded-full bg-purple-600/30 text-purple-400 flex items-center justify-center text-xs font-bold">✓</div>
+                        <span>Ambiente esterilizado com rigorosos padrões internacionais</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-slate-200">
+                        <div class="w-5 h-5 rounded-full bg-purple-600/30 text-purple-400 flex items-center justify-center text-xs font-bold">✓</div>
+                        <span>Planos de tratamento flexíveis e transparentes</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="w-72 h-72 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-purple-600/30 shadow-2xl bg-slate-800">
+                    <img src="./dentista_perfil.jpg" alt="Profissional Responsável" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 5: SLIDER DE ANTES E DEPOIS (Fundo Claro) -->
+    <section id="transformacao" class="py-24 px-4 bg-lightBg text-slate-800 text-center">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-xs font-bold text-purple-600 uppercase tracking-widest">Transformação</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mt-2 mb-3">
+                Sorrisos transformados que contam histórias reais
+            </h2>
+            <p class="text-slate-600 text-sm mb-12">Arraste para o lado e veja o antes e depois de pacientes atendidos pela nossa equipe.</p>
+
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-xl overflow-hidden relative flex justify-center">
+                <div class="comparison-container relative w-full max-w-2xl h-[380px] sm:h-[450px] rounded-2xl overflow-hidden select-none cursor-ew-resize shadow-inner bg-slate-900" id="comparisonSlider">
+                    <img src="./sorriso_depois.jpg" alt="Depois" class="absolute inset-0 w-full h-full object-cover">
+                    
+                    <div class="absolute inset-0 overflow-hidden" id="beforeImageWrapper" style="width: 50%;">
+                        <img src="./sorriso_antes.jpg" alt="Antes" class="absolute inset-0 w-full h-full object-cover max-w-none" id="beforeImg">
+                    </div>
+
+                    <div class="absolute top-0 bottom-0 w-1 bg-white shadow-2xl z-10 flex items-center justify-center" id="sliderDivider" style="left: 50%;">
+                        <div class="absolute w-8 h-8 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-lg font-bold text-xs border-2 border-slate-700">
+                            ↔
+                        </div>
+                    </div>
+
+                    <span class="absolute top-4 left-4 bg-black/70 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full z-20 pointer-events-none border border-white/10">Antes</span>
+                    <span class="absolute top-4 right-4 bg-blue-600/80 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full z-20 pointer-events-none border border-white/10">Depois</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 6: DEPOIMENTOS (Fundo Branco) -->
+    <section id="depoimentos" class="py-24 px-4 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold text-purple-600 uppercase tracking-widest">Depoimentos</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mt-2 mb-4">
+                    Histórias reais de cuidados excepcionais
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-lightBg border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4 text-sm">★★★★★</div>
+                        <p class="text-slate-700 text-xs sm:text-sm italic mb-6 leading-relaxed">"O atendimento foi excelente desde a recepção até a conclusão do meu implante. Profissionais de primeira!"</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-purple-600/20 text-purple-600 flex items-center justify-center font-bold text-xs">JM</div>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-900">Juliana Martins</span>
+                            <span class="text-[10px] text-slate-500">Paciente Verificada</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-lightBg border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4 text-sm">★★★★★</div>
+                        <p class="text-slate-700 text-xs sm:text-sm italic mb-6 leading-relaxed">"Fiz meu clareamento a laser e o resultado ficou incrível. Clínica muito limpa, moderna e pontual."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-purple-600/20 text-purple-600 flex items-center justify-center font-bold text-xs">RC</div>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-900">Ricardo Costa</span>
+                            <span class="text-[10px] text-slate-500">Paciente Verificado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-lightBg border border-slate-200 rounded-3xl p-8 flex flex-col justify-between shadow-sm">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4 text-sm">★★★★★</div>
+                        <p class="text-slate-700 text-xs sm:text-sm italic mb-6 leading-relaxed">"Sempre tive medo de dentista, mas a equipe daqui me passou tanta confiança que superei isso totalmente."</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-purple-600/20 text-purple-600 flex items-center justify-center font-bold text-xs">AS</div>
+                        <div>
+                            <span class="block text-xs font-bold text-slate-900">Amanda Souza</span>
+                            <span class="text-[10px] text-slate-500">Paciente Verificada</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 7: FORMULÁRIO DE AGENDAMENTO (Fundo Claro com Bloco Moderno) -->
+    <section id="agendamento" class="py-24 px-4 bg-lightBg border-t border-slate-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+                <div class="text-center max-w-xl mx-auto mb-10">
+                    <span class="text-xs font-bold text-purple-600 uppercase tracking-widest">Agende sua Visita</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mt-2 mb-3">
+                        Reserve sua consulta online pelo WhatsApp
+                    </h2>
+                    <p class="text-slate-600 text-xs sm:text-sm">
+                        Preencha o formulário abaixo para garantir seu horário com nossa equipe de atendimento.
+                    </p>
+                </div>
+
+                <form onsubmit="sendWhatsAppBooking(event)" class="flex flex-col gap-5 max-w-lg mx-auto">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nome Completo</label>
+                        <input type="text" id="patientName" required placeholder="Ex: Ana Paula" class="w-full bg-lightBg border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-purple-600 transition-all">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Tratamento Desejado</label>
+                            <select id="treatmentType" class="w-full bg-lightBg border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-purple-600 transition-all">
+                                <option value="Avaliação Geral">Avaliação Geral</option>
+                                <option value="Implantes Dentários">Implantes Dentários</option>
+                                <option value="Clareamento Dental">Clareamento Dental</option>
+                                <option value="Ortodontia">Ortodontia</option>
+                                <option value="Urgência Odontológica">Urgência</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Melhor Período</label>
+                            <select id="timePreference" class="w-full bg-lightBg border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-purple-600 transition-all">
+                                <option value="Manhã">Manhã</option>
+                                <option value="Tarde">Tarde</option>
+                                <option value="Noite">Noite</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Observações (Opcional)</label>
+                        <textarea id="patientNotes" rows="3" placeholder="Ex: Sinto sensibilidade no dente ao tomar gelado..." class="w-full bg-lightBg border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-purple-600 transition-all resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full mt-2 inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-purple-600 text-white font-bold text-sm shadow-xl shadow-purple-600/30 hover:bg-purple-700 transition-all">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        Confirmar Agendamento no WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Fundo Escuro) -->
+    <footer class="bg-primaryDark border-t border-slate-800 text-slate-400 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-xs">
             <div>
                 <span class="block font-bold text-white text-sm mb-1">{{CLINIC_NAME}}</span>
                 <span class="text-[10px] text-slate-500 uppercase">Clínica Odontológica Avançada</span>
             </div>
             <div class="flex flex-col gap-2 md:items-center">
                 <div class="flex items-center gap-2">
-                    <i data-lucide="phone" class="w-4 h-4 text-brandBlue"></i>
+                    <i data-lucide="phone" class="w-4 h-4 text-purple-400"></i>
                     <span>{{PHONE_DISPLAY}}</span>
                 </div>
                 <div class="flex items-center gap-2">
-                    <i data-lucide="map-pin" class="w-4 h-4 text-brandBlue"></i>
+                    <i data-lucide="map-pin" class="w-4 h-4 text-purple-400"></i>
                     <span>{{ADDRESS}}</span>
                 </div>
             </div>
@@ -283,6 +420,7 @@
     <script>
         lucide.createIcons();
 
+        // Script do Slider de Antes & Depois
         const slider = document.getElementById('comparisonSlider');
         const beforeWrapper = document.getElementById('beforeImageWrapper');
         const divider = document.getElementById('sliderDivider');
@@ -326,6 +464,7 @@
             });
         }
 
+        // Envio do Agendamento para o WhatsApp
         function sendWhatsAppBooking(event) {
             event.preventDefault();
 
